@@ -61,5 +61,5 @@ You can see these mini-projects and try them on your own to see if you can imple
 </style>
 
 <div style="background-color: #d2d2d2; padding:0.5rem;border-radius:2rem; box-shadow:0 0 10px 5px;" id="block">
-<h1 style="text-align:center; font-family: 'Brush Script MT', cursive; font-size:2.5rem;">WITH <span id="anim">❤️</span> FROM <a href="">HARDY</a></h1>
+<h1 style="text-align:center; font-family: 'Brush Script MT', cursive; font-size:2.5rem;">WITH <span id="anim">❤️</span> FROM <a href="https://www.linkedin.com/in/hardyslays/">HARDY</a></h1>
 </div>
