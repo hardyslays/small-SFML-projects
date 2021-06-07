@@ -9,7 +9,7 @@ using namespace sf;
 
 int main()
 {
-    RenderWindow app(VideoMode(SIZE, SIZE), "BOX IN BOX");
+    RenderWindow app(VideoMode(SIZE, SIZE), "CRAZY BOX!!!");
     app.setFramerateLimit(60);
 
     RectangleShape bigBox(Vector2f(SIZE/2, SIZE/2));
