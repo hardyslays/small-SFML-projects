@@ -4,8 +4,8 @@
 #include <SFML/Window.hpp>
 #include <iostream>
 #include <random>
-#define MAX 15
-#define TIMER 8
+#define MAX 15  //Controls the size of game board
+#define TIMER 8 //Inversly controls the speed of snake
 using namespace sf;
 
 int state = 0, size = 1, grid = 50, dir = 1;
@@ -17,11 +17,14 @@ struct pos
 
 int main()
 {
+    //SEDDING THE RANDOM VARIABLES
     srand(time(NULL));
 
+    //CREATING THE WINDOW INSTANCE
     RenderWindow app(VideoMode(grid*MAX, grid*MAX), "THE SNAKE GAME");
     app.setFramerateLimit(60);
 
+    //INITIALIZING VARIABLES AND VALUES FOR THE GAME
     RectangleShape body(Vector2f(grid, grid)), bg(Vector2f(grid *MAX, grid * MAX)), point(Vector2f(grid, grid));
     Texture bodybg;
     std::cout << bodybg.loadFromFile("body.png");
@@ -42,6 +45,7 @@ int main()
     p.setCharacterSize(MAX*2);
     p.setPosition( (grid*MAX/2)- MAX*5 , MAX );
 
+    //CHECKING AND UPDATING GAME FRAME BY FRAME
     while(app.isOpen())
     {
         Event e;
@@ -56,9 +60,10 @@ int main()
             if(Keyboard::isKeyPressed(Keyboard::D) && dir != 3)dir = 1;   
         }
         
+        //CLEARING THE APPLICATION
         app.clear();
 
-
+        //IF THE GAME HAS JUST STARTED OR RESTARTED
         if(state == 0)
         {
             p.setFillColor(Color::Red);
@@ -73,9 +78,10 @@ int main()
             continue;
         }
 
+        //IF THE GAME IS RUNNING
         if(state == 1)
         {
-            //COLLISION
+            //CHECKING COLLISION
             for (int i = 1; i < size; i++)
             {
                 if (snake[0].x == snake[i].x && snake[0].y == snake[i].y)
@@ -102,7 +108,7 @@ int main()
                 state = -1;
             }
             
-            //MOVINGSNAKE
+            //MOVING THE SNAKE
             if(moveTimer)
             {
                 moveTimer--;
@@ -159,13 +165,9 @@ int main()
                     }
                 }
             }
-
-            
-            
-            
-
         }
-    
+
+        //IF THE GAME IS OVER, OPTION FOR RESTARTING
         if(state == -1)
         {
 
@@ -182,5 +184,7 @@ int main()
     
     }
 
+    //END OF THE PROGRAM
+    
     return 0;
 }
