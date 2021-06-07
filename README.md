@@ -1,4 +1,4 @@
-#SMALL AND FUN SFML PROJECTS
+# SMALL AND FUN SFML PROJECTS
 
 ---
 
@@ -37,7 +37,7 @@ You can use the Makefile to compile the source that would be provided. All the m
 
 # FURTHER ANNOUNCEMENT
 
-Let me make one thing clear, these projects are nnothing fancy as such, and are just created to apply the basics of SFML integration in C++.
+These projects are nothing fancy as such, and are just created to uderstand the basics and applications of SFML integration in C++.
 /
 You can see these mini-projects and try them on your own to see if you can implement these basics, and maybe even make them more efficient then mine.
 /
