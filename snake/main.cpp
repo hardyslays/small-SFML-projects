@@ -4,8 +4,8 @@
 #include <SFML/Window.hpp>
 #include <iostream>
 #include <random>
-#define MAX 10
-#define TIMER 5
+#define MAX 15
+#define TIMER 8
 using namespace sf;
 
 int state = 0, size = 1, grid = 50, dir = 1;
