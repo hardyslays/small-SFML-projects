@@ -35,6 +35,16 @@ You can use the Makefile to compile the source that would be provided. All the m
 
 ---
 
+# LIST OF PROJECTS:
+ The list of projects currently added in the repo are:
+ 1. Crazy ball:
+  > You have a crazy ball that loves bouncing here and there. It has just weakness, It cannot beat the gravity. Or can it? I guess with a little support(Force in upward direction).
+ 2. Snake Game
+  > There's nothing much to tell. It is the classic snake game where you control a snake eating points and avoiding the walls and its body.
+---
+
+---
+
 # FURTHER ANNOUNCEMENT
 
 These projects are nothing fancy as such, and are just created to uderstand the basics and applications of SFML integration in C++.
