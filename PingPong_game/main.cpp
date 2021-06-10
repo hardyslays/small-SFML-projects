@@ -3,8 +3,9 @@
 #include <string>
 #include <iostream>
 #include <random>
-#define SIZE 1000
-#define MAXY 15.0
+#define SIZE 1000           //SIZE OF BOARD
+#define MAX_POINT 3         //MAXIMUM POINT NEEDED TO WIN THE MATCH
+#define MAX_SPEED 10.0      //MAXIMUM Y SPEED OF BALL
 using namespace sf;
 
 int state = 0;
@@ -45,7 +46,9 @@ int main()
         app.clear();
 
         app.draw(bg);
+        
 
+        //STATE ): The welcome page of the game
         if(state == 0)
         {
             s1 = 0;
@@ -65,6 +68,7 @@ int main()
             if(Keyboard::isKeyPressed(Keyboard::Enter))state = 2;
         }
 
+        //STATE 2: If the game has just started or the Left player has scored point in last round
         if(state == 2)
         {
             bg.setFillColor(Color(136, 135, 134));
@@ -83,6 +87,7 @@ int main()
             state = 1;
         }
         
+        //STATE 3: If right player has scored in last round
         if(state == 3)
         {
             //INITIALIZE
@@ -99,6 +104,7 @@ int main()
             state = 1;
         }
 
+        //If the round is currently going on
         if(state == 1)
         {
             //PLAYER ONE MOVEMENT
@@ -147,14 +153,14 @@ int main()
             if(ball.getPosition().y <= 0)bally = -bally;
             //DOWN
             if(ball.getPosition().y > SIZE - 2*ball.getRadius())bally = -bally;
-            //RIGHT
-            if(ball.getPosition().x <= 0)
+            //RIGHT WALL
+            if(ball.getPosition().x < ball.getRadius())
             {
                 state = 2;
                 s2++;
             }
-            //LEFT
-            if(ball.getPosition().x >= SIZE - 2*ball.getRadius())
+            //LEFT WALL
+            if(ball.getPosition().x > SIZE - ball.getRadius())
             {
                 state = 3;
                 s1++;
@@ -164,8 +170,8 @@ int main()
             {
                 ballx = -ballx;
                 bally += vel1;
-                if(bally > MAXY)bally = MAXY;
-                if(bally < -MAXY)bally = -MAXY;
+                if(bally > MAX_SPEED)bally = MAX_SPEED;
+                if(bally < -MAX_SPEED)bally = -MAX_SPEED;
 
             }
             //PLAYER 2
@@ -173,8 +179,8 @@ int main()
             {
                 ballx = -ballx;
                 bally += vel2;
-                if(bally > MAXY)bally = MAXY;
-                if(bally < -MAXY)bally = -MAXY;
+                if(bally > MAX_SPEED)bally = MAX_SPEED;
+                if(bally < -MAX_SPEED)bally = -MAX_SPEED;
             }
             
             //DISPLAY SCORE
@@ -187,7 +193,7 @@ int main()
             app.draw(score);
 
             //CHECKING WINNER
-            if(s1 == 5 || s2 == 5)state = 4;
+            if(s1 == MAX_POINT || s2 == MAX_POINT)state = 4;
 
             //DRAWING STUFF
             app.draw(p1);
@@ -195,6 +201,7 @@ int main()
             app.draw(ball);
         }
 
+        //If any one player has won
         if(state == 4)
         {
             //DISPLAY SCORE
@@ -207,13 +214,13 @@ int main()
             app.draw(score);
 
 
-            if(s1 == 5)
+            if(s1 == MAX_POINT)
             {    
                 score.setString("PLAYER ONE WINS THE MATCH.");
                 score.setPosition(SIZE/2 - score.getGlobalBounds().width/2, SIZE/2 - score.getGlobalBounds().height);
                 app.draw(score);
             }
-            else if(s2 == 5)
+            else if(s2 == MAX_POINT)
             {    
                 score.setString("PLAYER TWO WINS THE MATCH.");
                 score.setPosition(SIZE/2 - score.getGlobalBounds().width/2, SIZE/2 - score.getGlobalBounds().height);
